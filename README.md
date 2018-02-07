@@ -1,1 +1,1 @@
-# guitarbuddy
+# GuitarBuddy
