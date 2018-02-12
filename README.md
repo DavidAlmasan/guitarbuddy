@@ -4,9 +4,14 @@ An app that listens to your guitar playing and creates a similar song based on y
 
 Hopefully have Android integration by 2018
 
-
+#DONE
+1) Python 2 script that listens to your playing through the microphone and logs INDIVIDUAL GUITAR NOTES. No guitar chords as of yet.
+2) Python 3 script that loads takes a list of guitar notes, and creates a WAV file of the note progression 
 #TODO
-
+1) Python 3 script that takes a recording of multiple iterations of the same chord and splits the audio file into WAV files that each contain one strumming of the chord
+2) Transition from Python 2 to Python 3 *
+3) Create a neural network that recognises guitar chords instead of relying on Fourier Transform
+* This step is optional as we wish to move to neural networks ( 3) ) as means of ID
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
@@ -27,59 +32,15 @@ scikit
 
 A step by step series of examples that tell you have to get a development env running
 
-CURRENT BUILD: 2 Python scrips which run independently
 
-```
-note_trainer_with_logging.py is the file that listens to the playing through the microphone and recognises INDIVIDUAL NOTES. No chord reading is done
-
-play_from_file2.py 
-```
-
-
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **David Almasan** - *Boss of bosses and the mob* - [DavidAlmasan](https://github.com/DavidAlmasan)
+* **Alexandru Ardelean** - *Keeper of zacusca* - [ArdeleanAlexandru](https://github.com/alexander34)
+* **George Venizelos** - *Water boy, HTTPS expert* - [GeroVeni](https://github.com/GeroVeni)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+
 
 ## License
 
@@ -89,4 +50,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 * Hat tip to anyone who's code was used
 * Inspiration
-* etc
+* Visinata
