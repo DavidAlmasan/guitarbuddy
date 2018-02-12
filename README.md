@@ -5,13 +5,13 @@ An app that listens to your guitar playing and creates a similar song based on y
 Hopefully have Android integration by 2018
 
 #DONE
-1) Python 2 script that listens to your playing through the microphone and logs INDIVIDUAL GUITAR NOTES. No guitar chords as of yet.
-2) Python 3 script that loads takes a list of guitar notes, and creates a WAV file of the note progression 
+Python 2 script that listens to your playing through the microphone and logs INDIVIDUAL GUITAR NOTES. No guitar chords as of yet.
+Python 3 script that loads takes a list of guitar notes, and creates a WAV file of the note progression 
 #TODO
-1) Python 3 script that takes a recording of multiple iterations of the same chord and splits the audio file into WAV files that each contain one strumming of the chord
-2) Transition from Python 2 to Python 3 *
-3) Create a neural network that recognises guitar chords instead of relying on Fourier Transform
-* This step is optional as we wish to move to neural networks ( 3) ) as means of ID
+Python 3 script that takes a recording of multiple iterations of the same chord and splits the audio file into WAV files that each contain one strumming of the chord
+Transition from Python 2 to Python 3 (**)
+Create a neural network that recognises guitar chords instead of relying on Fourier Transform
+(**) This step is optional as we wish to move to neural networks ( 3) ) as means of ID
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
