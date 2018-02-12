@@ -1,9 +1,11 @@
 # GuitarBuddy
 
-AI for recognizing and reproducing guitar notes.
+An app that listens to your guitar playing and creates a similar song based on your chord progression and tempo
+
+Hopefully have Android integration by 2018
 
 
-#TBD
+#TODO
 
 ## Getting Started
 
@@ -11,29 +13,29 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
+Packages needed in orde to get the current build running
 ```
-Give examples
+pyaudio
+scipy
+numpy
+matplotlib
+tensorflow
+scikit
 ```
 
 ### Installing
 
 A step by step series of examples that tell you have to get a development env running
 
-Say what the step will be
+CURRENT BUILD: 2 Python scrips which run independently
 
 ```
-Give the example
+note_trainer_with_logging.py is the file that listens to the playing through the microphone and recognises INDIVIDUAL NOTES. No chord reading is done
+
+play_from_file2.py 
 ```
 
-And repeat
 
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
 
 ## Running the tests
 
