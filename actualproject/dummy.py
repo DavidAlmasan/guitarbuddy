@@ -14,6 +14,12 @@ from scipy.signal import blackmanharris, fftconvolve
 from numpy import argmax, sqrt, mean, diff, log
 from matplotlib.mlab import find
 
+def loudness(chunk):
+    data = numpy.array(chunk, dtype=float) / 32768.0
+    ms = math.sqrt(numpy.sum(data ** 2.0) / len(data))
+    if ms < 10e-8: ms = 10e-8
+    return 10.0 * math.log(ms, 10.0)
+
 class SoundRecorder:
         
     def __init__(self):
@@ -105,9 +111,9 @@ class AudioSequence(object):
                 
                 SR.setup()
                 raw_data_signal = SR.getAudio()                                         #### raw_data_signal is the input signal data 
-                #signal_level = round(abs(loudness(raw_data_signal)),2)     
-                             #### find the volume from the audio sample
-                print "signal:" + str(raw_data_signal) + '\n'
+                signal_level = round(abs(loudness(raw_data_signal)),2)     
+                
+                
                 # try: 
                 #     inputnote = round(freq_from_autocorr(raw_data_signal,SR.RATE),2)    #### find the freq from the audio sample
                     
@@ -122,9 +128,9 @@ class AudioSequence(object):
                 # if inputnote < frequencies[0]:                                     #### not interested in notes below the notes list
                 #     continue    
                         
-                # if signal_level > soundgate:                                        #### basic noise gate to stop it guessing ambient noises 
-                #     continue
-                
+                if signal_level > soundgate:                                        #### basic noise gate to stop it guessing ambient noises 
+                     continue
+                print "signal:" + str(raw_data_signal) + '\n'
                 
                 #targetnote = closest_value_index(frequencies, round(inputnote, 2))     #### find the closest note in the keyed array                
 
