@@ -6,7 +6,7 @@ import sys
 
 pa = pyaudio.PyAudio()
 
-wf = wave.open('EE.wav', 'rb')
+wf = wave.open('Ggg.wav', 'rb')
 
 def create(L, name):
     wf = wave.open(name, 'wb')
@@ -44,7 +44,7 @@ plt.grid()
 P = np.sqrt(P)
 P = [0 if p < thr else p for p in P]
 i =0
-index = 31
+index = 0
 while i < len(P)-1:
     if P[i] == 0 and P[i+1]!=0:
         start = i+1
@@ -53,7 +53,7 @@ while i < len(P)-1:
         while j<len(P)-1:
             if P[j] != 0 and P[j+1] ==0:
                 stop = j+1
-                create(Y[start:stop], 'Echord_'+str(index)+'.wav')
+                create(Y[start:stop], 'Gchord_'+str(index)+'.wav')
                 index += 1
                 break
             j += 1

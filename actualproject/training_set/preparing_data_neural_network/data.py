@@ -7,11 +7,11 @@ import csv
 
 pa = pyaudio.PyAudio()
 
-csvfile = open("dataset.csv", 'a')
+csvfile = open("dataset_test.csv", 'a')
 spamwriter = csv.writer(csvfile, delimiter=',')
-N = 28
+N = 2
 for i in range(N):
-	wf = wave.open('../Gchord/Gchord_' + str(i+27) + '.wav', 'rb')
+	wf = wave.open('../Etest/Echord_' + str(i) + '.wav', 'rb')
 
 	CHUNK = 1023 + 1 #+1 to account for losing one number at the end which becomes the label
 	paramnames = ['nchannels', 'sampwidth', 'framerate', 'nframes', 'comptype', 'compname']
@@ -33,7 +33,7 @@ for i in range(N):
 	while index+ CHUNK < len(Y):
 		# print(str(index) + ', ' + str(index + CHUNK))
 		row = Y[index:index+CHUNK]
-		row[CHUNK-1] = 1  #1 = Gchord 0 = Echord
+		row[CHUNK-1] = 0  #1 = Gchord 0 = Echord
 		spamwriter.writerow([a for a in row])   #0 indicative of E note, 1 idicative of G note
 		index +=int(3*CHUNK/4)
 

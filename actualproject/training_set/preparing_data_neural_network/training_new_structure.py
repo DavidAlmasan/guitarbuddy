@@ -32,7 +32,7 @@ Y = one_hot_encoder(y)
 train_x, test_x, train_y, test_y = train_test_split(X, Y, test_size = 0.30, random_state = 415)
 
 learning_rate = 0.25
-epochs = 10000
+epochs = 15000
 neurons = 500 #number of neurons for first layer
 
 x = tf.placeholder(tf.float32, [None, X[0].size])
@@ -60,7 +60,7 @@ y_ = tf.placeholder(tf.float32, [None, 2])
 cross_entropy = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits = y, labels = y_))
 train_step = tf.train.GradientDescentOptimizer(learning_rate).minimize(cross_entropy)
 init = tf.global_variables_initializer()
-saver = tf.train.Saver({"W1": W1, "W2": W2, "W3": W3, "W4": W4,"b1": b1, "b2": b2, "b3": b3, "b4": b4})
+saver = tf.train.Saver({"W1": W1, "W2": W2, "W3": W3, "W4": W4,"W5": W5, "b1": b1, "b2": b2, "b3": b3, "b4": b4, "b5": b5})
 #sess = tf.InteractiveSession()
 #tf.global_variables_initializer().run() #initialise variables
 
@@ -73,7 +73,7 @@ for percent in range(epochs):
 	for i in percentages:
 		if percent/epochs == i:
 			print("Training at {}%".format(i*100))
-save_path = saver.save(sess, "../models/EGchords_new_structure_2.ckpt") #new structure - 0.9479 accuracy new structure 2 -
+save_path = saver.save(sess, "../models/new_structure/EGchords_new_structure_2.ckpt") #new structure - 0.9479 accuracy new structure 2 -
 print("Model saved in file:  \n", save_path)
 
 correct_prediction = tf.equal(tf.argmax(y,1), tf.argmax(y_,1))
