@@ -6,13 +6,13 @@ import sys
 
 pa = pyaudio.PyAudio()
 
-wf = wave.open('Enote_0.wav', 'rb')
+wf = wave.open('EE.wav', 'rb')
 
 def create(L, name):
     wf = wave.open(name, 'wb')
     wf.setnchannels(1)
     wf.setsampwidth(pa.get_sample_size(pyaudio.paInt16))
-    wf.setframerate(16000)
+    wf.setframerate(44100)
     wf.writeframes(b''.join(L))
     wf.close()
 
@@ -44,7 +44,7 @@ plt.grid()
 P = np.sqrt(P)
 P = [0 if p < thr else p for p in P]
 i =0
-index = 0
+index = 31
 while i < len(P)-1:
     if P[i] == 0 and P[i+1]!=0:
         start = i+1
@@ -53,7 +53,7 @@ while i < len(P)-1:
         while j<len(P)-1:
             if P[j] != 0 and P[j+1] ==0:
                 stop = j+1
-                create(Y[start:stop], 'Enote_'+str(index)+'.wav')
+                create(Y[start:stop], 'Echord_'+str(index)+'.wav')
                 index += 1
                 break
             j += 1
