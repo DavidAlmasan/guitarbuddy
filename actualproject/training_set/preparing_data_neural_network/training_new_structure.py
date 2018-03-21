@@ -29,10 +29,10 @@ Y = one_hot_encoder(y)
 
 
 
-train_x, test_x, train_y, test_y = train_test_split(X, Y, test_size = 0.30, random_state = 415)
+train_x, test_x, train_y, test_y = train_test_split(X, Y, test_size = 0.20, random_state = 415)
 
-learning_rate = 0.25
-epochs = 15000
+learning_rate = 0.1
+epochs = 10000
 neurons = 500 #number of neurons for first layer
 
 x = tf.placeholder(tf.float32, [None, X[0].size])
@@ -72,8 +72,9 @@ for percent in range(epochs):
 	sess.run(train_step, feed_dict = {x: train_x, y_:train_y})
 	for i in percentages:
 		if percent/epochs == i:
+			learning_rate = learning_rate * 0.985
 			print("Training at {}%".format(i*100))
-save_path = saver.save(sess, "../models/new_structure/EGchords_new_structure_2.ckpt") #new structure - 0.9479 accuracy new structure 2 -
+save_path = saver.save(sess, "../models/decreasing_learning_rate_2/EGchords_decreasing_learning_rate_2.ckpt") #new structure - 0.9479 accuracy new structure 2 -
 print("Model saved in file:  \n", save_path)
 
 correct_prediction = tf.equal(tf.argmax(y,1), tf.argmax(y_,1))

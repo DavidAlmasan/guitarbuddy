@@ -1,0 +1,2 @@
+model_checkpoint_path: "EGchords_training_new_structure_2.ckpt"
+all_model_checkpoint_paths: "EGchords_training_new_structure_2.ckpt"

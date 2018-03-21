@@ -157,11 +157,11 @@ class NoteTrainer(object):
         
     def main(self, screen):
 
-    	sequence = []
-    	previous = 'A0'
+        sequence = []
+        previous = 'A0'
 
         screen_size = (1024,768)
-        screen_color = (0, 0 ,0)
+        screen_color = (0, 0, 0)
         stepsize = 5
         
         # Build frequency, noteName dictionary
