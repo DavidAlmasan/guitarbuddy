@@ -28,6 +28,7 @@ def one_hot_encoder(labels):
 
 
 
+
 #Reading the dataset with panda
 df = ps.read_csv("dataset.csv")
 X = df[df.columns[0:1023]].values
@@ -42,7 +43,7 @@ Y = one_hot_encoder(y)
 
 train_x, test_x, train_y, test_y = train_test_split(X, Y, test_size = 0.30, random_state = 415)
 #hyperparams
-learning_rate = 0.0001
+learning_rate = 0.0001 # one of you change this to 0.00001
 epochs = 4000
 neurons = 1500 #number of neurons for first layer
 accuracy_max = 0
@@ -94,11 +95,24 @@ for percent in range(epochs):
 		sess.run(train_step, feed_dict = {x: xs, y_:ys})
 		correct_prediction = tf.equal(tf.argmax(y,1), tf.argmax(y_,1))
 		accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
-		print("Epoch: ", percent+1)
-		print("Batch number: ", int(index/batch_size))
-		print("Accuracy:", sess.run(accuracy, feed_dict={x: test_x, y_: test_y}))
-		print("Cross entropy: ", cross_entropy)
-		print("-----------------------------")
+		###### logging to file
+		if percent == 0 and index == batch_size:
+			accuracy_over_epochs = open("accuracy_over_epochs.txt", 'w')
+			accuracy_over_epochs.write("Epoch: " + str(percent+1) + '\n')
+			accuracy_over_epochs.write("Batch number: " + str(int(index/batch_size)) + '\n')
+			accuracy_over_epochs.write("Accuracy: " + str(sess.run(accuracy, feed_dict={x: test_x, y_: test_y})) + '\n')
+			accuracy_over_epochs.write("------------------------------------------" + '\n')
+		else:
+			accuracy_over_epochs = open("accuracy_over_epochs.txt", 'a' )
+			accuracy_over_epochs.write("Epoch: " + str(percent+1) + '\n')
+			accuracy_over_epochs.write("Batch number: " + str(int(index/batch_size)) + '\n')
+			accuracy_over_epochs.write("Accuracy: " + str(sess.run(accuracy, feed_dict={x: test_x, y_: test_y})) + '\n')
+			accuracy_over_epochs.write("------------------------------------------" + '\n')
+		#print("Epoch: ", percent+1)
+		#print("Batch number: ", int(index/batch_size))
+		#print("Accuracy:", sess.run(accuracy, feed_dict={x: test_x, y_: test_y}))
+		#print("Cross entropy: ", cross_entropy)
+		#print("-----------------------------")
 		for i in percentages:
 			if percent/epochs == i:
 				print("Training at {}%".format(i*100))
