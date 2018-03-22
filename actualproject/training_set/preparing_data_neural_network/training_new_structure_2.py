@@ -28,7 +28,7 @@ def one_hot_encoder(labels):
 
 
 #Reading the dataset with panda
-df = ps.read_csv("dataset_cache.csv")
+df = ps.read_csv("dataset.csv")
 X = df[df.columns[0:1023]].values
 y = df[df.columns[1023]].values
 X, y = shuffle(X, y, random_state = 1)
@@ -43,7 +43,7 @@ Y = one_hot_encoder(y)
 train_x, test_x, train_y, test_y = train_test_split(X, Y, test_size = 0.20, random_state = 415)
 
 learning_rate = 0.2
-epochs = 100
+epochs = 1000
 neurons = 1500 #number of neurons for first layer
 
 x = tf.placeholder(tf.float32, [None, X[0].size])
@@ -98,20 +98,21 @@ accuracy_current = 0
 percentages = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.8, 0.9]
 for percent in range(epochs):
 	sess.run(train_step, feed_dict = {x: train_x, y_:train_y})
-	correct_prediction = tf.equal(tf.argmax(y,1), tf.argmax(y_,1))
-	accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
-	accuracy_current = float( sess.run(accuracy, feed_dict={x: test_x, y_: test_y}) )
-	if accuracy_current > accuracy_max:
-		maxW1 = W1
-		maxb1 = b1
-		maxW2 = W2
-		maxb2 = b2
-		maxW3 = W3
-		maxb3 = b3
-		maxW4 = W4
-		maxb4 = b4
-		maxW5 = W5
-		maxb5 = b5
+	if percent / epochs > 0.5:  #only record accuracy after 50% of training
+		correct_prediction = tf.equal(tf.argmax(y,1), tf.argmax(y_,1))
+		accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
+		accuracy_current = float( sess.run(accuracy, feed_dict={x: test_x, y_: test_y}) )
+		if accuracy_current > accuracy_max:
+			maxW1 = W1
+			maxb1 = b1
+			maxW2 = W2
+			maxb2 = b2
+			maxW3 = W3
+			maxb3 = b3
+			maxW4 = W4
+			maxb4 = b4
+			maxW5 = W5
+			maxb5 = b5
 	for i in percentages:
 		if percent/epochs == i:
 			learning_rate = learning_rate * 0.985
