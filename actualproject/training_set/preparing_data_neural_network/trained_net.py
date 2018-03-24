@@ -18,7 +18,7 @@ def one_hot_encoder(labels):
 neurons = 500 #number of neurons for first layer
 
 #Reading the dataset with panda
-df = ps.read_csv("dataset_cache.csv")
+df = ps.read_csv("dataset_test.csv")
 X = df[df.columns[0:1023]].values
 y = df[df.columns[1023]].values
 X, y = shuffle(X, y, random_state = 1)
@@ -27,7 +27,7 @@ encoder.fit(y)
 y = encoder.transform(y)
 Y = one_hot_encoder(y)
 
-train_x, test_x, train_y, test_y = train_test_split(X, Y, test_size = 0.9, random_state = 415)
+#train_x, test_x, train_y, test_y = train_test_split(X, Y, test_size = 0.9, random_state = 415)
 
 x = tf.placeholder(tf.float32, [None, X[0].size])
 
@@ -67,5 +67,5 @@ with tf.Session() as sess:
 
   accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
 
-  print(sess.run(accuracy, feed_dict={x: test_x, y_: test_y}))
+  print(sess.run(accuracy, feed_dict={x: X, y_: Y}))
 

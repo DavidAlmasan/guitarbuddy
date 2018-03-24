@@ -46,10 +46,10 @@ train_x, test_x, train_y, test_y = train_test_split(X, Y, test_size = 0.30, rand
 #hyperparams
 learning_rate = 0.0001 # one of you change this to 0.00001
 epochs = 200
-neurons = 1500 #number of neurons for first layer
+neurons = 1500 #number of neurons for first layer # initial configuration : 1500-300-75-10-2
 accuracy_max = 0
 accuracy_current = 0
-batch_size = 550
+batch_size = 500 #originally 550
 validation_time = 20 #number of epochs needed for the loss to change significantly enough to stop training
 #print(train_x.shape)
 
@@ -63,24 +63,27 @@ chunk = np.zeros(3, dtype = np.float32)
 x = tf.placeholder(tf.float32, [None, X[0].size])
 
 #initialising weights and biases
-W1 = tf.Variable(tf.truncated_normal([X[0].size, neurons], stddev = 0.1)) #1500 neurons
+W1 = tf.Variable(tf.truncated_normal([X[0].size, neurons], stddev = 0.1)) #2000 neurons
 b1 = tf.Variable(tf.zeros([neurons]))
-W2 = tf.Variable(tf.truncated_normal([neurons, int(neurons/5)], stddev = 0.1)) #300 neurons
-b2 = tf.Variable(tf.zeros([int(neurons/5)]))
-W3 = tf.Variable(tf.truncated_normal([int(neurons/5), int(neurons/20)], stddev = 0.1)) #75 neurons
-b3 = tf.Variable(tf.zeros([int(neurons/20)]))
-W4 = tf.Variable(tf.truncated_normal([int(neurons/20), int(neurons/150)], stddev = 0.1)) #10 neurons
-b4 = tf.Variable(tf.zeros([int(neurons/150)]))
-W5 = tf.Variable(tf.truncated_normal([int(neurons/150), 2], stddev = 0.1))
-b5 = tf.Variable(tf.zeros([2]))
+#W2 = tf.Variable(tf.truncated_normal([neurons, int(neurons/2)], stddev = 0.1)) #1000 neurons
+#b2 = tf.Variable(tf.zeros([int(neurons/2)]))
+#W3 = tf.Variable(tf.truncated_normal([int(neurons/2), int(neurons/4)], stddev = 0.1)) #500 neurons
+#b3 = tf.Variable(tf.zeros([int(neurons/4)]))
+W4 = tf.Variable(tf.truncated_normal([int(neurons), int(neurons/3)], stddev = 0.1)) #500 neurons
+b4 = tf.Variable(tf.zeros([int(neurons/3)]))
+W5 = tf.Variable(tf.truncated_normal([int(neurons/3), int(neurons/15)], stddev = 0.1)) #10 neurons
+b5 = tf.Variable(tf.zeros([int(neurons/15)]))
+W6 = tf.Variable(tf.truncated_normal([int(neurons/15), 2], stddev = 0.1))
+b6 = tf.Variable(tf.zeros([2]))
 
 
 #forward pass
 y1 = tf.nn.tanh(tf.matmul(x, W1) + b1)
-y2 = tf.nn.tanh(tf.matmul(y1, W2) + b2)
-y3 = tf.nn.relu(tf.matmul(y2, W3) + b3)
-y4 = tf.nn.relu(tf.matmul(y3, W4) + b4)
-y = tf.nn.softmax(tf.matmul(y4, W5) + b5)
+#y2 = tf.nn.tanh(tf.matmul(y1, W2) + b2)
+#y3 = tf.nn.tanh(tf.matmul(y2, W3) + b3)
+y4 = tf.nn.relu(tf.matmul(y1, W4) + b4)
+y5 = tf.nn.relu(tf.matmul(y4, W5) + b5)
+y = tf.nn.softmax(tf.matmul(y5, W6) + b6)
 
 y_ = tf.placeholder(tf.float32, [None, 2])
 
@@ -88,7 +91,7 @@ y_ = tf.placeholder(tf.float32, [None, 2])
 
 #cross_entropy = tf.reduce_mean(-tf.reduce_sum(y_ * tf.log(y), reduction_indices=[1]))
 cross_entropy = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits_v2(logits = y, labels = y_))
-train_step = tf.train.AdamOptimizer(learning_rate, beta1 = 0.99).minimize(cross_entropy)
+train_step = tf.train.AdamOptimizer(learning_rate, beta1 = 0.95).minimize(cross_entropy)
 init = tf.global_variables_initializer()
 #saver = tf.train.Saver({"W1": W1, "W2": W2, "W3": W3, "W4": W4,"W5": W5, "b1": b1, "b2": b2, "b3": b3, "b4": b4, "b5": b5})
 
@@ -98,6 +101,7 @@ sess.run(init)
 percentages = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.8, 0.9]
 for percent in range(epochs):
 	index = 0 #index to start the batch from
+	print(percent)
 	while index < train_x.shape[0]-batch_size -1: #not sure if -1 is needed, just making sure
 		xs, ys = train_x[index: index + batch_size], train_y[index: index + batch_size] #training only in batches, for each epoch
 		index += batch_size
