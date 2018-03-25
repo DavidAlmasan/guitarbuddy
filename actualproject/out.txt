@@ -1,368 +1,61 @@
-A0
-F3
-G3#
-G4
-D3
-B2
-F3#
-A3
-G3#
-F3
-E5b
-G3
-F3#
-A3
-B3b
-C4
-B3b
-G3#
-G3
-G3#
-G3
-F3#
-F3
-A3
-G3#
-A3
-G3#
-A3
-B3b
-G3#
-F3#
-F3
-E3
-E3b
-D3
-C6#
-F3
-B3b
-C4
-B3b
-G4
-D3
-B2
-G4
-F3
-G3
-F3#
-G3#
-A3
-B3b
-G3
-F3#
-F3
-F5
-D3
-E3
-F3#
-F3
-C3
-F3#
-G3#
-A3
-F3#
-G3
-G3#
-G3
-F3#
-B3b
-D4
-C4#
-C4
-A4
-F3
-F3#
-G3#
-C3#
-B2
-C3#
-B2
-C3#
-B2
-E3
-F3
-G3#
-F3#
-B2
-E5
-G3#
-F4#
-C3#
-B2
-C2
-B4
-F3#
-F4#
-G4
-F3#
-G4
-F3
-D3
-C3#
-C3
-G3
-C3
-D3
-A3
-G3#
-A3
-G3#
-G3
-G3#
-F3#
-G3#
-G3
-F3#
-G3#
-F3#
-G3
-G3#
-E3b
-D3
-E3b
-C4
-G3
-G3#
-G3
-F3#
-F3
-E3
-F3
-G3
-D2
-G3
-C3
-F3
-G3
-G3#
-G4#
-A4
-G4#
-A4
-G4#
-C4
-G3
-G3#
-G3
-E3
-F3
-G3
-F3
-F3#
-G3
-D3
-E3b
-F3
-F3#
-C3#
-B2
-C3
-C4#
-G3
-F3#
-F3
-E3
-F3#
-F3
-E3
-F3#
-F3
-F3#
-G3
-G3#
-A3
-G3
-G3#
-G3
-B4b
-A3
-E3
-E3b
-F3#
-C4#
-C4
-C4#
-C4
-A3
-G3
-F4#
-F3
-G3
-A3
-G3#
-G3
-G3#
-A3
-G3#
-G3
-F3#
-B3b
-C4
-C4#
-B3b
-A3
-G3#
-B3b
-F3
-G3#
-A3
-G3#
-F3#
-G3
-F4#
-E3
-F3
-E3
-F4#
-B4b
-G3
-G3#
-G3
-F3#
-F4#
-E3b
-G4
-F3#
-A3
-B3b
-G4
-F3
-F4#
-G4
-G3#
-A3
-G3#
-F3
-F4
-F5
-E3
-F3
-E3
-F3
-A5
-B3b
-C4
-C4#
-C4
-C4#
-F4#
-B3b
-A3
-B3b
-A3
-B3
-B3b
-G3#
-B3b
-A3
-G3#
-E3
-E3b
-E3
-F3
-F5
-F5#
-E3
-C3#
-D3
-F3#
-G3#
-F4#
-F4
-F3#
-F3
-F4#
-C5
-G6#
-G3
-A3
-B3b
-G4#
-G3#
-A3
-G3#
-G3
-F3#
-G3
-F3#
-F3
-G3#
-G3
-D3
-E3
-A3
-F3#
-B4
-C3
-C3#
-F6#
-D3
-E3b
-D3
-C3
-D3
-C3
-B2b
-G4#
-F3
-E5b
-E3
-G3
-G3#
-G3
-G3#
-G3
-G2
-B2
-B2b
-F3#
-A3
-B3
-C4#
-C4
-B3
-E5
-F3#
-F4#
-F3#
-F3
-G3
-F3#
-F3
-F4#
-F4
-F3#
-F3
-C6
-G3#
-F3#
-F5#
-C3
-D3
-E3
-E3b
-B4b
-D3
-E3b
-C3#
-B2
-A2
-B2b
-E3
-F3
-G4
-F3#
-D3
-C3#
-D3
-B2
-A2
-E3
-B2
-E3
-D3
-G4#
-G6
-F3
-C3
-B2
+file Start.wav
+file E3.wav
+file G4#.wav
+file E2.wav
+file G3#.wav
+file B6.wav
+file E2.wav
+file F2#.wav
+file A2.wav
+file C3#.wav
+file E2.wav
+file E4.wav
+file D2.wav
+file F4#.wav
+file G4#.wav
+file B2b.wav
+file F2#.wav
+file F3#.wav
+file B4.wav
+file F2#.wav
+file F2.wav
+file B5b.wav
+file G5.wav
+file G3#.wav
+file G4#.wav
+file C4#.wav
+file C2#.wav
+file B6b.wav
+file C5#.wav
+file C5.wav
+file B4.wav
+file A3.wav
+file E5b.wav
+file G3#.wav
+file G2#.wav
+file G3.wav
+file A3.wav
+file G3#.wav
+file B4b.wav
+file F2#.wav
+file G2.wav
+file B2b.wav
+file E5b.wav
+file C5#.wav
+file E5b.wav
+file D6.wav
+file G5#.wav
+file F2#.wav
+file C4#.wav
+file E2.wav
+file G4#.wav
+file E3b.wav
+file D5.wav
+file E5b.wav
+file C3#.wav
+file C5#.wav
+file C4#.wav
+file C3#.wav
+file F5.wav
+file F3.wav
+file G2#.wav

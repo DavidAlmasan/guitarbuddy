@@ -57,7 +57,7 @@ neurons = 1500 #number of neurons for first layer # initial configuration : 1500
 accuracy_max = 0
 accuracy_current = 0
 batch_size = 500 #originally 550
-validation_time = 20 #number of epochs needed for the loss to change significantly enough to stop training
+validation_time = 10 #number of epochs needed for the loss to change significantly enough to stop training
 check_epoch = 0 #will be incremented by validation_time and check everytime
 validation_error_vector = []
 #print(train_x.shape)
@@ -119,12 +119,12 @@ for percent in range(epochs):
 		if len(validation_error_vector) > 1:
 			if validation_error_vector[-1] > validation_error_vector[-2]:
 				break
-		save_path = saver.save(sess, "../models/training_new_structure_2/EGchords_training_new_structure_2.ckpt") #new structure - 0.9479 accuracy new structure 2 -
+		save_path = saver.save(sess, "../models/adam_new/EGchords_adam_new.ckpt") 
 		check_epoch += validation_time
 		correct_prediction = tf.equal(tf.argmax(y,1), tf.argmax(y_,1))
 		accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
 		accuracy_value = sess.run(accuracy, feed_dict={x: test_x, y_: test_y})
-		print("Epoch: ", percent)
+		#print("Epoch: ", percent)
 		#print("Batch number: ", int(index/batch_size))
 		print("Accuracy:", accuracy_value)
 		print("Validation error:", validation_error_vector[-1])

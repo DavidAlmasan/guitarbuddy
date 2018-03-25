@@ -14,9 +14,6 @@ def one_hot_encoder(labels):
 	one_hot_encoder[np.arange(n_label), labels] = 1
 	return one_hot_encoder
 
-
-neurons = 500 #number of neurons for first layer
-
 #Reading the dataset with panda
 df = ps.read_csv("dataset_test.csv")
 X = df[df.columns[0:1023]].values
@@ -27,7 +24,6 @@ encoder.fit(y)
 y = encoder.transform(y)
 Y = one_hot_encoder(y)
 
-train_x, test_x, train_y, test_y = train_test_split(X, Y, test_size = 0.9, random_state = 415)
 
 x = tf.placeholder(tf.float32, [None, X[0].size])
 
@@ -62,7 +58,7 @@ saver = tf.train.Saver()
 # do some work with the model.
 with tf.Session() as sess:
   # Restore variables from disk.
-  saver.restore(sess, "../models/training_new_structure_2/EGchords_training_new_structure_2.ckpt")
+  saver.restore(sess, "../models/adam_new/EGchords_adam_new.ckpt")
   print("Model restored.")
   # Check the values of the variables
   correct_prediction = tf.equal(tf.argmax(y,1), tf.argmax(y_,1))
